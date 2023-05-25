@@ -12,7 +12,7 @@ init:
 	git lfs install
 	git lfs track "*.fit"
 	git lfs track "*.hdf5"
-	git lfs track "*.html"
+	# git lfs track "*.html"
 	git lfs track "*.parquet"
 	git add .
 	poetry run pre-commit run --all-files
