@@ -30,6 +30,10 @@ push:
 	poetry run pre-commit run --all-files
 	make test
 	poetry version patch
-	git commit -am "Release commit."
-	poetry publish --build
+	git commit -am "Update."
 	git push
+
+
+publish:
+	make push
+	poetry publish --build
