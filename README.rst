@@ -5,7 +5,7 @@ camminapy
 
 
 
-Install via `pip`:
+Install via ``pip``:
 
 .. code-block:: bash
 
@@ -13,7 +13,7 @@ Install via `pip`:
 
 
 
-Install via `poetry`:
+Install via ``poetry``:
 
 .. code-block:: bash
 
