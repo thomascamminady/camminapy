@@ -30,3 +30,4 @@ pypi:
 	poetry version minor
 	git commit -am "Release commit."
 	poetry publish --build
+	git push
