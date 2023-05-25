@@ -24,6 +24,8 @@ test:
 coverage:
 	pytest --cov=camminapy tests/
 
+cov:
+	make coverage
 
 publish:
 	poetry run pyclean .
