@@ -6,6 +6,8 @@ authors = ["Thomas Camminady <0milieux_member@icloud.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+altair = "^5.0.0"
+gitpython = "^3.1.31"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.0.1"
