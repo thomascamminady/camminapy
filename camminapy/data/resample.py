@@ -109,6 +109,8 @@ def resample_dataframe_grouped_pandas(
     """
     Pandas wrapper for groupwise resampling.
 
+    NOTE: This does alter the index!
+
     See `resample_dataframe_grouped_polars` for details.
     """
     return resample_dataframe_grouped_polars(
