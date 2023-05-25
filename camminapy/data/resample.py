@@ -87,7 +87,7 @@ def resample_dataframe_grouped_polars(
         Which numeric column to use for the interpolation points.
     interpolation_step : float
         Steps for the newly create interpolation points
-    group_column:str
+    group_column : str
         The column over which to group
     to_log : bool
         Whether or not to show additional logging info.
@@ -171,7 +171,7 @@ def resample_dataframe_grouped_pandas(
         Which numeric column to use for the interpolation points.
     interpolation_step : float
         Steps for the newly create interpolation points
-    group_column:str
+    group_column : str
         The column over which to group
     to_log : bool
         Whether or not to show additional logging info.
