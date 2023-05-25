@@ -35,5 +35,9 @@ push:
 
 
 publish:
+	poetry export -f requirements.txt --output requirements.txt
+	poetry run pyclean .
+	poetry run pre-commit run --all-files
+	make test
 	poetry version patch
 	poetry publish --build
