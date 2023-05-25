@@ -24,21 +24,13 @@ test:
 coverage:
 	pytest --cov=camminapy tests/
 
-push:
-	poetry export -f requirements.txt --output requirements.txt
-	poetry run pyclean .
-	poetry run pre-commit run --all-files
-	make test
-
-	git commit -am "Update."
-	git push
-
 
 publish:
-	poetry export -f requirements.txt --output requirements.txt
 	poetry run pyclean .
 	poetry run pre-commit run --all-files
 	make test
+	poetry export -f requirements.txt --output requirements.txt
 	poetry version patch
 	poetry publish --build
 	git commit -am "Version bump."
+	git push
