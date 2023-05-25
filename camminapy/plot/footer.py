@@ -18,7 +18,7 @@ class Footer:
     """
 
     def __init__(self, repo: str):
-        self.path = repo
+        self.path = repo  # TODO: Get this automatically as pwd.
         self.repo = Repo(repo)
 
     def get_username(self) -> str:
