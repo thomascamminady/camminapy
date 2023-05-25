@@ -5,7 +5,7 @@ camminapy
 
 
 
-Install via pip_
+Install via pip_:
 
 .. code-block:: bash
 
