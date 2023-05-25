@@ -23,3 +23,10 @@ test:
 
 coverage:
 	pytest --cov=camminapy tests/
+
+
+pypi:
+	poetry run pre-commit run --all-files
+	git commit -am "Release commit."
+	poetry version minor
+	poetry publish --build
