@@ -44,3 +44,13 @@ publish:
 	poetry publish --build
 	git commit -am "Version bump."
 	git push
+
+
+full:
+	poetry version patch
+	poetry publish --build
+	make doc
+	pre-commit run --all || true
+	pre-commit run --all || true
+	git commit -am "Update doc."
+	git push

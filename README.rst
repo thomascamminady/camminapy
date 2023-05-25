@@ -3,8 +3,7 @@ camminapy
 =========
 
 
-Workflow
-
+Workflow:
 
 .. code-block:: bash
 
