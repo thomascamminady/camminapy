@@ -3,7 +3,7 @@ camminapy
 =========
 
 
-Workflow:
+Development workflow:
 
 .. code-block:: bash
 
