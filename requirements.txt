@@ -10,15 +10,24 @@ gitdb==4.0.10 ; python_version >= "3.9" and python_version < "4" \
 gitpython==3.1.31 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:8ce3bcf69adfdf7c7d503e78fd3b1c492af782d58893b650adb2ac8912ddd573 \
     --hash=sha256:f04893614f6aa713a60cbbe1e6a97403ef633103cdd0ef5eb6efe0deb98dbe8d
+importlib-metadata==6.6.0 ; python_version >= "3.9" and python_version < "3.10" \
+    --hash=sha256:43dd286a2cd8995d5eaef7fee2066340423b818ed3fd70adf0bad5f1fac53fed \
+    --hash=sha256:92501cdf9cc66ebd3e612f1b4f0c0765dfa42f0fa38ffb319b6bd84dd675d705
 jinja2==3.1.2 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852 \
     --hash=sha256:6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61
 jsonschema==4.17.3 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:0f864437ab8b6076ba6707453ef8f98a6a0d512a80e93f8abdb676f737ecb60d \
     --hash=sha256:a870ad254da1a8ca84b6a2905cac29d265f805acc57af304784962a2aa6508f6
+mako==1.2.4 ; python_version >= "3.9" and python_version < "4" \
+    --hash=sha256:c97c79c018b9165ac9922ae4f32da095ffd3c4e6872b45eded42926deea46818 \
+    --hash=sha256:d60a3903dc3bb01a18ad6a89cdbe2e4eadc69c0bc8ef1e3773ba53d44c3f7a34
 markdown-it-py==2.2.0 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30 \
     --hash=sha256:7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1
+markdown==3.4.3 ; python_version >= "3.9" and python_version < "4" \
+    --hash=sha256:065fd4df22da73a625f14890dd77eb8040edcbd68794bcd35943be14490608b2 \
+    --hash=sha256:8bf101198e004dc93e84a12a7395e31aac6a9c9942848ae1d99b9d72cf9b3520
 markupsafe==2.1.2 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:0576fe974b40a400449768941d5d0858cc624e3249dfd1e0c33674e5c7ca7aed \
     --hash=sha256:085fd3201e7b12809f9e6e9bc1e5c96a368c8523fad5afb02afe3c051ae4afcc \
@@ -128,6 +137,9 @@ pandas==2.0.1 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:e09a53a4fe8d6ae2149959a2d02e1ef2f4d2ceb285ac48f74b79798507e468b4 \
     --hash=sha256:f25e23a03f7ad7211ffa30cb181c3e5f6d96a8e4cb22898af462a7333f8a74eb \
     --hash=sha256:fe7914d8ddb2d54b900cec264c090b88d141a1eed605c9539a187dbc2547f022
+pdoc3==0.10.0 ; python_version >= "3.9" and python_version < "4" \
+    --hash=sha256:5f22e7bcb969006738e1aa4219c75a32f34c2d62d46dc9d2fb2d3e0b0287e4b7 \
+    --hash=sha256:ba45d1ada1bd987427d2bf5cdec30b2631a3ff5fb01f6d0e77648a572ce6028b
 polars==0.17.15 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:0ce049ed923ff2a8902f8925bde0e10722e7a9747133b7d0856feb86000543bd \
     --hash=sha256:112300a41b97291486edb604945275f7e5238ec1335f164f028e476c0401fca4 \
@@ -216,3 +228,6 @@ typing-extensions==4.6.1 ; python_version >= "3.9" and python_version < "3.11" \
 tzdata==2023.3 ; python_version >= "3.9" and python_version < "4" \
     --hash=sha256:11ef1e08e54acb0d4f95bdb1be05da659673de4acbd21bf9c69e94cc5e907a3a \
     --hash=sha256:7e65763eef3120314099b6939b5546db7adce1e7d6f2e179e3df563c70511eda
+zipp==3.15.0 ; python_version >= "3.9" and python_version < "3.10" \
+    --hash=sha256:112929ad649da941c23de50f356a2b5570c954b65150642bccdd66bf194d224b \
+    --hash=sha256:48904fc76a60e542af151aded95726c1a5c34ed43ab4134b597665c86d7ad556
