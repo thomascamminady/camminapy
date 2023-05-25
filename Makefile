@@ -35,6 +35,5 @@ push:
 
 
 publish:
-	make push
 	poetry version patch
 	poetry publish --build
