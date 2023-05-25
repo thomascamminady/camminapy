@@ -93,22 +93,22 @@ __all__ = [&#34;Footer&#34;, &#34;altair_setup&#34;, &#34;altair_theme&#34;]</co
 <span>(</span><span>path: str | None = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Add .properties(title=Footer(repo).create()) to your plot to create a footer.</p>
+<div class="desc"><p>Add <code>.properties(title=Footer(repo).create())</code> to your plot to create a footer.</p>
 <p>IMPORTANT: As of now, this kills the original title.</p>
 <p>Workaround:
-Add .properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})
+Add <code>.properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})</code>
 Then it is not a footer but a subtitle.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Footer:
-    &#34;&#34;&#34;Add .properties(title=Footer(repo).create()) to your plot to create a footer.
+    &#34;&#34;&#34;Add `.properties(title=Footer(repo).create())` to your plot to create a footer.
 
     IMPORTANT: As of now, this kills the original title.
 
     Workaround:
-    Add .properties(title={&#34;text&#34;: &#34;ACTUAL PLOT TITLE&#34;, **Footer().subtitle()})
+    Add `.properties(title={&#34;text&#34;: &#34;ACTUAL PLOT TITLE&#34;, **Footer().subtitle()})`
     Then it is not a footer but a subtitle.
     &#34;&#34;&#34;
 
@@ -152,9 +152,9 @@ Then it is not a footer but a subtitle.</p></div>
         return &#34;, &#34;.join(self.create_list())
 
     def create(self, one_line=True) -&gt; alt.TitleParams:
-        &#34;&#34;&#34;Creates an al.TitleParams object with footer information.
+        &#34;&#34;&#34;Creates an `alt.TitleParams` object with footer information.
 
-        Add .properties(title=Footer().create()) to your plot to create a footer.
+        Add `.properties(title=Footer().create())` to your plot to create a footer.
         &#34;&#34;&#34;
         if one_line:
             text = self.create_joined()
@@ -174,7 +174,7 @@ Then it is not a footer but a subtitle.</p></div>
     def subtitle(self) -&gt; dict[str, Any]:
         &#34;&#34;&#34;Creates subtitle information in dictionary form.
 
-        Use via .properties(title={&#34;text&#34;: &#34;ACTUAL PLOT TITLE&#34;, **Footer().subtitle()})
+        Use via `.properties(title={&#34;text&#34;: &#34;ACTUAL PLOT TITLE&#34;, **Footer().subtitle()})`
         &#34;&#34;&#34;
         return {
             &#34;subtitle&#34;: self.create_joined(),
@@ -189,16 +189,16 @@ Then it is not a footer but a subtitle.</p></div>
 <span>def <span class="ident">create</span></span>(<span>self, one_line=True) ‑> altair.vegalite.v5.schema.core.TitleParams</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Creates an al.TitleParams object with footer information.</p>
-<p>Add .properties(title=Footer().create()) to your plot to create a footer.</p></div>
+<div class="desc"><p>Creates an <code>alt.TitleParams</code> object with footer information.</p>
+<p>Add <code>.properties(title=Footer().create())</code> to your plot to create a footer.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def create(self, one_line=True) -&gt; alt.TitleParams:
-    &#34;&#34;&#34;Creates an al.TitleParams object with footer information.
+    &#34;&#34;&#34;Creates an `alt.TitleParams` object with footer information.
 
-    Add .properties(title=Footer().create()) to your plot to create a footer.
+    Add `.properties(title=Footer().create())` to your plot to create a footer.
     &#34;&#34;&#34;
     if one_line:
         text = self.create_joined()
@@ -314,7 +314,7 @@ Then it is not a footer but a subtitle.</p></div>
 </code></dt>
 <dd>
 <div class="desc"><p>Creates subtitle information in dictionary form.</p>
-<p>Use via .properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})</p></div>
+<p>Use via <code>.properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})</code></p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -322,7 +322,7 @@ Then it is not a footer but a subtitle.</p></div>
 <pre><code class="python">def subtitle(self) -&gt; dict[str, Any]:
     &#34;&#34;&#34;Creates subtitle information in dictionary form.
 
-    Use via .properties(title={&#34;text&#34;: &#34;ACTUAL PLOT TITLE&#34;, **Footer().subtitle()})
+    Use via `.properties(title={&#34;text&#34;: &#34;ACTUAL PLOT TITLE&#34;, **Footer().subtitle()})`
     &#34;&#34;&#34;
     return {
         &#34;subtitle&#34;: self.create_joined(),
