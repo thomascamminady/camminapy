@@ -35,7 +35,6 @@ doc:
 	mv html/camminapy/* docs
 	rm -rf html/
 
-
 publish:
 	poetry run pyclean .
 	poetry run pre-commit run --all-files
