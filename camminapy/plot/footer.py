@@ -8,12 +8,12 @@ from git import Repo  # type: ignore
 
 
 class Footer:
-    """Add .properties(title=Footer(repo).create()) to your plot to create a footer.
+    """Add `.properties(title=Footer(repo).create())` to your plot to create a footer.
 
     IMPORTANT: As of now, this kills the original title.
 
     Workaround:
-    Add .properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})
+    Add `.properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})`
     Then it is not a footer but a subtitle.
     """
 
@@ -57,9 +57,9 @@ class Footer:
         return ", ".join(self.create_list())
 
     def create(self, one_line=True) -> alt.TitleParams:
-        """Creates an al.TitleParams object with footer information.
+        """Creates an `alt.TitleParams` object with footer information.
 
-        Add .properties(title=Footer().create()) to your plot to create a footer.
+        Add `.properties(title=Footer().create())` to your plot to create a footer.
         """
         if one_line:
             text = self.create_joined()
@@ -79,7 +79,7 @@ class Footer:
     def subtitle(self) -> dict[str, Any]:
         """Creates subtitle information in dictionary form.
 
-        Use via .properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})
+        Use via `.properties(title={"text": "ACTUAL PLOT TITLE", **Footer().subtitle()})`
         """
         return {
             "subtitle": self.create_joined(),
