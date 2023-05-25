@@ -27,6 +27,9 @@ coverage:
 cov:
 	make coverage
 
+doc:
+	poetry run pdoc --html camminapy
+
 publish:
 	poetry run pyclean .
 	poetry run pre-commit run --all-files
