@@ -29,11 +29,12 @@ push:
 	poetry run pyclean .
 	poetry run pre-commit run --all-files
 	make test
-	poetry version patch
+
 	git commit -am "Update."
 	git push
 
 
 publish:
 	make push
+	poetry version patch
 	poetry publish --build
