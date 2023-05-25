@@ -74,3 +74,23 @@ def test_reproduce_original_df_grouped_polars(n: int, step: int):
     )
 
     assert df.frame_equal(df_resampled)
+
+
+@pytest.mark.parametrize("n,step", COMBINATIONS)
+def test_reproduce_original_df_grouped_but_has_no_group_pandas(n: int, step: int):
+    df = _get_df_pandas(n, step, to_group=False)
+    df_resampled = resample_dataframe_grouped_pandas(
+        df, interpolation_column="x", interpolation_step=step, group_column="grp"
+    )
+
+    assert df.equals(df_resampled)
+
+
+@pytest.mark.parametrize("n,step", COMBINATIONS)
+def test_reproduce_original_df_grouped_but_has_no_group_polars(n: int, step: int):
+    df = _get_df_polars(n, step, to_group=False)
+    df_resampled = resample_dataframe_grouped_polars(
+        df, interpolation_column="x", interpolation_step=step, group_column="grp"
+    )
+
+    assert df.frame_equal(df_resampled)
