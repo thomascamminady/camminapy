@@ -1,11 +1,14 @@
 [tool.poetry]
 name = "camminapy"
-version = "0.8.1"
+version = "0.8.2"
 description = "Personal helper functions and code snippets."
 authors = ["Thomas Camminady <0milieux_member@icloud.com>"]
+readme = "README.rst"
+repository = "https://github.com/thomascamminady/camminapy"
+
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9,<4"
 altair = "^5.0.0"
 gitpython = "^3.1.31"
 
