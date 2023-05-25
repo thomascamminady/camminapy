@@ -30,11 +30,14 @@
 import pandas as pd
 import polars as pl
 
+from camminapy import logger
+
 
 def resample_dataframe_polars(
     df: pl.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
+    to_log: bool = False,
 ) -&gt; pl.DataFrame:
     &#34;&#34;&#34;Resamples a dataframe to obtain data at interpolation points.
 
@@ -46,6 +49,8 @@ def resample_dataframe_polars(
         Which numeric column to use for the interpolation points.
     interpolation_step : float
         Steps for the newly create interpolation points
+    to_log : bool
+        Whether or not to show additional logging info.
 
     Returns
     -------
@@ -54,25 +59,43 @@ def resample_dataframe_polars(
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
     &#34;&#34;&#34;
+    # Get the x-values onto which we want to interpolate the data.
     interpolation_points = pl.DataFrame(
         {
             interpolation_column: np.arange(
-                df.min()[0, interpolation_column],
-                df.max()[0, interpolation_column] + interpolation_step,
+                start=df.min()[0, interpolation_column],
+                stop=df.max()[0, interpolation_column] + interpolation_step,
                 step=interpolation_step,
             )
         }
     )
-
-    interpolated_df = interpolation_points.join(
+    # Add the new interpolation points to the input dataframe and interpolate the
+    # data onto those new interpolation points.
+    df_with_data_at_additional_interpolation_points = (
         interpolation_points.join(df, on=[interpolation_column], how=&#34;outer&#34;)
         .sort(interpolation_column)
-        .interpolate(),
+        .interpolate()
+    )
+
+    # After interpolation, we now have data at the new nodes. What&#39;s left is
+    # to only select those new interpolation nodes and the new data.
+    df_with_data_only_at_interpolation_points = interpolation_points.join(
+        df_with_data_at_additional_interpolation_points,
         on=[interpolation_column],
         how=&#34;left&#34;,
     ).sort(interpolation_column)
 
-    return interpolated_df
+    if to_log:
+        n_input = len(df)
+        n_output = len(df_with_data_only_at_interpolation_points)
+        logger.info(f&#34;Resampled from {n_input} rows to {n_output} rows.&#34;)
+
+    return df_with_data_only_at_interpolation_points
+
+
+#######################################################################################
+#                       Everything below is just wrappers.                            #
+#######################################################################################
 
 
 def resample_dataframe_grouped_polars(
@@ -279,7 +302,7 @@ data is interpolated onto that timeline.</dd>
 </details>
 </dd>
 <dt id="camminapy.data.resample.resample_dataframe_polars"><code class="name flex">
-<span>def <span class="ident">resample_dataframe_polars</span></span>(<span>df: polars.dataframe.frame.DataFrame, interpolation_column: str, interpolation_step: float) ‑> polars.dataframe.frame.DataFrame</span>
+<span>def <span class="ident">resample_dataframe_polars</span></span>(<span>df: polars.dataframe.frame.DataFrame, interpolation_column: str, interpolation_step: float, to_log: bool = False) ‑> polars.dataframe.frame.DataFrame</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Resamples a dataframe to obtain data at interpolation points.</p>
@@ -291,6 +314,8 @@ data is interpolated onto that timeline.</dd>
 <dd>Which numeric column to use for the interpolation points.</dd>
 <dt><strong><code>interpolation_step</code></strong> :&ensp;<code>float</code></dt>
 <dd>Steps for the newly create interpolation points</dd>
+<dt><strong><code>to_log</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not to show additional logging info.</dd>
 </dl>
 <h2 id="returns">Returns</h2>
 <dl>
@@ -307,6 +332,7 @@ data is interpolated onto that timeline.</dd>
     df: pl.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
+    to_log: bool = False,
 ) -&gt; pl.DataFrame:
     &#34;&#34;&#34;Resamples a dataframe to obtain data at interpolation points.
 
@@ -318,6 +344,8 @@ data is interpolated onto that timeline.</dd>
         Which numeric column to use for the interpolation points.
     interpolation_step : float
         Steps for the newly create interpolation points
+    to_log : bool
+        Whether or not to show additional logging info.
 
     Returns
     -------
@@ -326,25 +354,38 @@ data is interpolated onto that timeline.</dd>
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
     &#34;&#34;&#34;
+    # Get the x-values onto which we want to interpolate the data.
     interpolation_points = pl.DataFrame(
         {
             interpolation_column: np.arange(
-                df.min()[0, interpolation_column],
-                df.max()[0, interpolation_column] + interpolation_step,
+                start=df.min()[0, interpolation_column],
+                stop=df.max()[0, interpolation_column] + interpolation_step,
                 step=interpolation_step,
             )
         }
     )
-
-    interpolated_df = interpolation_points.join(
+    # Add the new interpolation points to the input dataframe and interpolate the
+    # data onto those new interpolation points.
+    df_with_data_at_additional_interpolation_points = (
         interpolation_points.join(df, on=[interpolation_column], how=&#34;outer&#34;)
         .sort(interpolation_column)
-        .interpolate(),
+        .interpolate()
+    )
+
+    # After interpolation, we now have data at the new nodes. What&#39;s left is
+    # to only select those new interpolation nodes and the new data.
+    df_with_data_only_at_interpolation_points = interpolation_points.join(
+        df_with_data_at_additional_interpolation_points,
         on=[interpolation_column],
         how=&#34;left&#34;,
     ).sort(interpolation_column)
 
-    return interpolated_df</code></pre>
+    if to_log:
+        n_input = len(df)
+        n_output = len(df_with_data_only_at_interpolation_points)
+        logger.info(f&#34;Resampled from {n_input} rows to {n_output} rows.&#34;)
+
+    return df_with_data_only_at_interpolation_points</code></pre>
 </details>
 </dd>
 </dl>
