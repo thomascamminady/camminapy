@@ -75,6 +75,7 @@ def resample_dataframe_grouped_polars(
     interpolation_column: str,
     interpolation_step: float,
     group_column: str,
+    to_log: bool = False,
 ) -> pl.DataFrame:
     """Groupwise resamples a dataframe to obtain data at interpolation points.
 
@@ -88,6 +89,8 @@ def resample_dataframe_grouped_polars(
         Steps for the newly create interpolation points
     group_column:str
         The column over which to group
+    to_log : bool
+        Whether or not to show additional logging info.
 
     Returns
     -------
@@ -95,6 +98,10 @@ def resample_dataframe_grouped_polars(
         A dataframe with the same columns as the input dataframe and where
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_polars for each group.
     """
     return pl.concat(
         [
@@ -102,6 +109,7 @@ def resample_dataframe_grouped_polars(
                 groupdf,
                 interpolation_column=interpolation_column,
                 interpolation_step=interpolation_step,
+                to_log=to_log,
             )
             for _, groupdf in df.groupby(group_column, maintain_order=True)
         ]
@@ -112,14 +120,37 @@ def resample_dataframe_pandas(
     df: pd.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
+    to_log: bool = False,
 ) -> pd.DataFrame:
-    """
-    Pandas wrapper for resampling.
+    """Resamples a dataframe to obtain data at interpolation points.
 
-    See `resample_dataframe_polars` for details.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe to interpolate.
+    interpolation_column : str
+        Which numeric column to use for the interpolation points.
+    interpolation_step : float
+        Steps for the newly create interpolation points
+    to_log : bool
+        Whether or not to show additional logging info.
+
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe with the same columns as the input dataframe and where
+        `interpolation_column` is spaced as `interpolation_step` and all other
+        data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_polars.
     """
     return resample_dataframe_polars(
-        pl.DataFrame(df), interpolation_column, interpolation_step
+        df=pl.DataFrame(df),
+        interpolation_column=interpolation_column,
+        interpolation_step=interpolation_step,
+        to_log=to_log,
     ).to_pandas()
 
 
@@ -128,17 +159,39 @@ def resample_dataframe_grouped_pandas(
     interpolation_column: str,
     interpolation_step: float,
     group_column: str,
+    to_log: bool = False,
 ) -> pd.DataFrame:
-    """
-    Pandas wrapper for groupwise resampling.
+    """Groupwise resamples a dataframe to obtain data at interpolation points.
 
-    NOTE: This does alter the index!
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe to interpolate.
+    interpolation_column : str
+        Which numeric column to use for the interpolation points.
+    interpolation_step : float
+        Steps for the newly create interpolation points
+    group_column:str
+        The column over which to group
+    to_log : bool
+        Whether or not to show additional logging info.
 
-    See `resample_dataframe_grouped_polars` for details.
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe with the same columns as the input dataframe and where
+        `interpolation_column` is spaced as `interpolation_step` and all other
+        data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_grouped_polars.
+
     """
     return resample_dataframe_grouped_polars(
-        pl.DataFrame(df),
-        interpolation_column,
-        interpolation_step,
-        group_column,
+        df=pl.DataFrame(df),
+        interpolation_column=interpolation_column,
+        interpolation_step=interpolation_step,
+        group_column=group_column,
+        to_log=to_log,
     ).to_pandas()

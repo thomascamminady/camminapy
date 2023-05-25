@@ -56,12 +56,32 @@ __all__ = [
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="camminapy.data.resample_dataframe_grouped_pandas"><code class="name flex">
-<span>def <span class="ident">resample_dataframe_grouped_pandas</span></span>(<span>df: pandas.core.frame.DataFrame, interpolation_column: str, interpolation_step: float, group_column: str) ‑> pandas.core.frame.DataFrame</span>
+<span>def <span class="ident">resample_dataframe_grouped_pandas</span></span>(<span>df: pandas.core.frame.DataFrame, interpolation_column: str, interpolation_step: float, group_column: str, to_log: bool = False) ‑> pandas.core.frame.DataFrame</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Pandas wrapper for groupwise resampling.</p>
-<p>NOTE: This does alter the index!</p>
-<p>See <code><a title="camminapy.data.resample_dataframe_grouped_polars" href="#camminapy.data.resample_dataframe_grouped_polars">resample_dataframe_grouped_polars()</a></code> for details.</p></div>
+<div class="desc"><p>Groupwise resamples a dataframe to obtain data at interpolation points.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>The dataframe to interpolate.</dd>
+<dt><strong><code>interpolation_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Which numeric column to use for the interpolation points.</dd>
+<dt><strong><code>interpolation_step</code></strong> :&ensp;<code>float</code></dt>
+<dd>Steps for the newly create interpolation points</dd>
+<dt>group_column:str</dt>
+<dt>The column over which to group</dt>
+<dt><strong><code>to_log</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not to show additional logging info.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pd.DataFrame</code></dt>
+<dd>A dataframe with the same columns as the input dataframe and where
+<code>interpolation_column</code> is spaced as <code>interpolation_step</code> and all other
+data is interpolated onto that timeline.</dd>
+</dl>
+<h2 id="info">Info</h2>
+<p>This is a wrapper that just calls resample_dataframe_grouped_polars.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -71,24 +91,46 @@ __all__ = [
     interpolation_column: str,
     interpolation_step: float,
     group_column: str,
+    to_log: bool = False,
 ) -&gt; pd.DataFrame:
-    &#34;&#34;&#34;
-    Pandas wrapper for groupwise resampling.
+    &#34;&#34;&#34;Groupwise resamples a dataframe to obtain data at interpolation points.
 
-    NOTE: This does alter the index!
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe to interpolate.
+    interpolation_column : str
+        Which numeric column to use for the interpolation points.
+    interpolation_step : float
+        Steps for the newly create interpolation points
+    group_column:str
+        The column over which to group
+    to_log : bool
+        Whether or not to show additional logging info.
 
-    See `resample_dataframe_grouped_polars` for details.
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe with the same columns as the input dataframe and where
+        `interpolation_column` is spaced as `interpolation_step` and all other
+        data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_grouped_polars.
+
     &#34;&#34;&#34;
     return resample_dataframe_grouped_polars(
-        pl.DataFrame(df),
-        interpolation_column,
-        interpolation_step,
-        group_column,
+        df=pl.DataFrame(df),
+        interpolation_column=interpolation_column,
+        interpolation_step=interpolation_step,
+        group_column=group_column,
+        to_log=to_log,
     ).to_pandas()</code></pre>
 </details>
 </dd>
 <dt id="camminapy.data.resample_dataframe_grouped_polars"><code class="name flex">
-<span>def <span class="ident">resample_dataframe_grouped_polars</span></span>(<span>df: polars.dataframe.frame.DataFrame, interpolation_column: str, interpolation_step: float, group_column: str) ‑> polars.dataframe.frame.DataFrame</span>
+<span>def <span class="ident">resample_dataframe_grouped_polars</span></span>(<span>df: polars.dataframe.frame.DataFrame, interpolation_column: str, interpolation_step: float, group_column: str, to_log: bool = False) ‑> polars.dataframe.frame.DataFrame</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Groupwise resamples a dataframe to obtain data at interpolation points.</p>
@@ -100,16 +142,20 @@ __all__ = [
 <dd>Which numeric column to use for the interpolation points.</dd>
 <dt><strong><code>interpolation_step</code></strong> :&ensp;<code>float</code></dt>
 <dd>Steps for the newly create interpolation points</dd>
+<dt>group_column:str</dt>
+<dt>The column over which to group</dt>
+<dt><strong><code>to_log</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not to show additional logging info.</dd>
 </dl>
-<p>group_column:str
-The column over which to group</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>pl.DataFrame</code></dt>
 <dd>A dataframe with the same columns as the input dataframe and where
 <code>interpolation_column</code> is spaced as <code>interpolation_step</code> and all other
 data is interpolated onto that timeline.</dd>
-</dl></div>
+</dl>
+<h2 id="info">Info</h2>
+<p>This is a wrapper that just calls resample_dataframe_polars for each group.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -119,6 +165,7 @@ data is interpolated onto that timeline.</dd>
     interpolation_column: str,
     interpolation_step: float,
     group_column: str,
+    to_log: bool = False,
 ) -&gt; pl.DataFrame:
     &#34;&#34;&#34;Groupwise resamples a dataframe to obtain data at interpolation points.
 
@@ -132,6 +179,8 @@ data is interpolated onto that timeline.</dd>
         Steps for the newly create interpolation points
     group_column:str
         The column over which to group
+    to_log : bool
+        Whether or not to show additional logging info.
 
     Returns
     -------
@@ -139,6 +188,10 @@ data is interpolated onto that timeline.</dd>
         A dataframe with the same columns as the input dataframe and where
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_polars for each group.
     &#34;&#34;&#34;
     return pl.concat(
         [
@@ -146,6 +199,7 @@ data is interpolated onto that timeline.</dd>
                 groupdf,
                 interpolation_column=interpolation_column,
                 interpolation_step=interpolation_step,
+                to_log=to_log,
             )
             for _, groupdf in df.groupby(group_column, maintain_order=True)
         ]
@@ -153,11 +207,30 @@ data is interpolated onto that timeline.</dd>
 </details>
 </dd>
 <dt id="camminapy.data.resample_dataframe_pandas"><code class="name flex">
-<span>def <span class="ident">resample_dataframe_pandas</span></span>(<span>df: pandas.core.frame.DataFrame, interpolation_column: str, interpolation_step: float) ‑> pandas.core.frame.DataFrame</span>
+<span>def <span class="ident">resample_dataframe_pandas</span></span>(<span>df: pandas.core.frame.DataFrame, interpolation_column: str, interpolation_step: float, to_log: bool = False) ‑> pandas.core.frame.DataFrame</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Pandas wrapper for resampling.</p>
-<p>See <code><a title="camminapy.data.resample_dataframe_polars" href="#camminapy.data.resample_dataframe_polars">resample_dataframe_polars()</a></code> for details.</p></div>
+<div class="desc"><p>Resamples a dataframe to obtain data at interpolation points.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>The dataframe to interpolate.</dd>
+<dt><strong><code>interpolation_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Which numeric column to use for the interpolation points.</dd>
+<dt><strong><code>interpolation_step</code></strong> :&ensp;<code>float</code></dt>
+<dd>Steps for the newly create interpolation points</dd>
+<dt><strong><code>to_log</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not to show additional logging info.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pd.DataFrame</code></dt>
+<dd>A dataframe with the same columns as the input dataframe and where
+<code>interpolation_column</code> is spaced as <code>interpolation_step</code> and all other
+data is interpolated onto that timeline.</dd>
+</dl>
+<h2 id="info">Info</h2>
+<p>This is a wrapper that just calls resample_dataframe_polars.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -166,14 +239,37 @@ data is interpolated onto that timeline.</dd>
     df: pd.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
+    to_log: bool = False,
 ) -&gt; pd.DataFrame:
-    &#34;&#34;&#34;
-    Pandas wrapper for resampling.
+    &#34;&#34;&#34;Resamples a dataframe to obtain data at interpolation points.
 
-    See `resample_dataframe_polars` for details.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe to interpolate.
+    interpolation_column : str
+        Which numeric column to use for the interpolation points.
+    interpolation_step : float
+        Steps for the newly create interpolation points
+    to_log : bool
+        Whether or not to show additional logging info.
+
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe with the same columns as the input dataframe and where
+        `interpolation_column` is spaced as `interpolation_step` and all other
+        data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_polars.
     &#34;&#34;&#34;
     return resample_dataframe_polars(
-        pl.DataFrame(df), interpolation_column, interpolation_step
+        df=pl.DataFrame(df),
+        interpolation_column=interpolation_column,
+        interpolation_step=interpolation_step,
+        to_log=to_log,
     ).to_pandas()</code></pre>
 </details>
 </dd>
