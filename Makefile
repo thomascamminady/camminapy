@@ -27,6 +27,6 @@ coverage:
 
 pypi:
 	poetry run pre-commit run --all-files
-	git commit -am "Release commit."
 	poetry version minor
+	git commit -am "Release commit."
 	poetry publish --build
