@@ -30,3 +30,8 @@ def test_footer_returns_subtitle_dict_no_path():
 def test_footer_can_create_chart_no_path():
     chart = alt.Chart().properties(title=Footer().create())
     assert isinstance(chart, alt.Chart)
+
+
+def test_footer_can_create_chart_no_path_not_one_line():
+    chart = alt.Chart().properties(title=Footer().create(one_line=False))
+    assert isinstance(chart, alt.Chart)
