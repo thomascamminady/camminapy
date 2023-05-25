@@ -30,7 +30,7 @@ def resample_dataframe_polars(
         {
             interpolation_column: np.arange(
                 df.min()[0, interpolation_column],
-                df.max()[0, interpolation_column],
+                df.max()[0, interpolation_column] + interpolation_step,
                 step=interpolation_step,
             )
         }
