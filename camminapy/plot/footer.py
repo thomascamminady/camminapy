@@ -8,7 +8,7 @@ from git import Repo  # type: ignore
 
 
 class Footer:
-    """Add .properties(title=Footer().create()) to your plot to create a footer.
+    """Add .properties(title=Footer(repo).create()) to your plot to create a footer.
 
     IMPORTANT: As of now, this kills the original title.
 
@@ -17,9 +17,11 @@ class Footer:
     Then it is not a footer but a subtitle.
     """
 
-    def __init__(self, repo: str):
-        self.path = repo  # TODO: Get this automatically as pwd.
-        self.repo = Repo(repo)
+    def __init__(self, path: str | None = None):
+        if path is None:
+            path = os.getcwd()
+        self.path = path
+        self.repo = Repo(self.path)
 
     def get_username(self) -> str:
         """Returns the username."""
