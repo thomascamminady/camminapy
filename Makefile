@@ -28,7 +28,8 @@ cov:
 	make coverage
 
 doc:
-	poetry run pdoc --html camminapy
+	poetry run pdoc --html camminapy --force
+	mv html/camminapy/* docs
 
 publish:
 	poetry run pyclean .
