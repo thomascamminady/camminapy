@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "camminapy"
-version = "0.8.12"
+version = "0.8.13"
 description = "Personal helper functions and code snippets."
 authors = ["Thomas Camminady <0milieux_member@icloud.com>"]
 readme = "README.rst"

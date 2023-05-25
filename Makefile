@@ -25,6 +25,7 @@ coverage:
 	pytest --cov=camminapy tests/
 
 pypi:
+	poetry run pyclean .
 	poetry run pre-commit run --all-files
 	make test
 	poetry version patch
