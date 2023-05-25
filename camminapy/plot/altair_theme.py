@@ -10,7 +10,7 @@ def altair_theme_gray() -> dict[str, Any]:
         Dictionary with parameters that define the theme.
     """
     color = "gray"
-    fontweight = "normal"
+    font_weight = "normal"
     small_font = 14
     medium_font = 16
     large_font = 30
@@ -24,9 +24,9 @@ def altair_theme_gray() -> dict[str, Any]:
             },
             "title": {
                 "anchor": "middle",
-                "fontWeight": fontweight,
-                "titleFontWeight": fontweight,
-                "labelFontWeight": fontweight,
+                "fontWeight": font_weight,
+                "titleFontWeight": font_weight,
+                "labelFontWeight": font_weight,
                 "fontSize": large_font,
                 "titleFontSize": medium_font,
                 "labelFontSize": small_font,
@@ -43,7 +43,7 @@ def altair_theme_gray() -> dict[str, Any]:
                 "color": color,
                 "titleColor": color,
                 "labelColor": color,
-                "titleFontWeight": fontweight,
+                "titleFontWeight": font_weight,
             },
             "view": {
                 "height": height,
@@ -60,9 +60,9 @@ def altair_theme_gray() -> dict[str, Any]:
                 "tickSize": 5,
                 "gridCap": "round",
                 "gridDash": [2, 4],
-                "fontWeight": fontweight,
-                "titleFontWeight": fontweight,
-                "labelFontWeight": fontweight,
+                "fontWeight": font_weight,
+                "titleFontWeight": font_weight,
+                "labelFontWeight": font_weight,
                 "fontSize": large_font,
                 "titleFontSize": medium_font,
                 "labelFontSize": small_font,
@@ -99,9 +99,9 @@ def altair_theme_gray() -> dict[str, Any]:
                 "spacing": 50,
             },
             "legend": {
-                "fontWeight": fontweight,
-                "titleFontWeight": fontweight,
-                "labelFontWeight": fontweight,
+                "fontWeight": font_weight,
+                "titleFontWeight": font_weight,
+                "labelFontWeight": font_weight,
                 "fontSize": large_font,
                 "titleFontSize": medium_font,
                 "labelFontSize": small_font,
@@ -117,7 +117,7 @@ def altair_theme_gray() -> dict[str, Any]:
 
 def altair_theme_gray_label_in_plot() -> dict:
     color = "gray"
-    fontweight = "normal"
+    font_weight = "normal"
     small_font = 14
     medium_font = 16
     large_font = 30
@@ -131,9 +131,9 @@ def altair_theme_gray_label_in_plot() -> dict:
             },
             "title": {
                 "anchor": "middle",
-                "fontWeight": fontweight,
-                "titleFontWeight": fontweight,
-                "labelFontWeight": fontweight,
+                "fontWeight": font_weight,
+                "titleFontWeight": font_weight,
+                "labelFontWeight": font_weight,
                 "fontSize": large_font,
                 "titleFontSize": medium_font,
                 "labelFontSize": small_font,
@@ -158,9 +158,9 @@ def altair_theme_gray_label_in_plot() -> dict:
                 "tickSize": 5,
                 "gridCap": "round",
                 "gridDash": [2, 4],
-                "fontWeight": fontweight,
-                "titleFontWeight": fontweight,
-                "labelFontWeight": fontweight,
+                "fontWeight": font_weight,
+                "titleFontWeight": font_weight,
+                "labelFontWeight": font_weight,
                 "fontSize": large_font,
                 "titleFontSize": medium_font,
                 "labelFontSize": small_font,
@@ -185,9 +185,9 @@ def altair_theme_gray_label_in_plot() -> dict:
                 "titleX": 10,
             },
             "legend": {
-                "fontWeight": fontweight,
-                "titleFontWeight": fontweight,
-                "labelFontWeight": fontweight,
+                "fontWeight": font_weight,
+                "titleFontWeight": font_weight,
+                "labelFontWeight": font_weight,
                 "fontSize": large_font,
                 "titleFontSize": medium_font,
                 "labelFontSize": small_font,
