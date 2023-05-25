@@ -9,11 +9,11 @@ camminapy
 
 Install
 --------
-To set up the project, simply run
+Install via pip
 
 .. code-block:: bash
 
-   make init
+   pip install camminapy
 
 
 Credits
