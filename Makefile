@@ -41,3 +41,4 @@ publish:
 	make test
 	poetry version patch
 	poetry publish --build
+	git commit -am "Version bump."
