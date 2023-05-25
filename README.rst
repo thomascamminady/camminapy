@@ -5,10 +5,16 @@ camminapy
 
 
 
-Install via pip_:
+Install via `pip`:
 
 .. code-block:: bash
 
    pip install camminapy
 
-.. _pip: https://pypi.org/project/camminapy/
+
+
+Install via `poetry`:
+
+.. code-block:: bash
+
+   poetry add camminapy
