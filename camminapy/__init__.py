@@ -1,7 +1,4 @@
-r"""# My personal code collection.
-
-Go to [Github](https://github.com/thomascamminady/camminapy) for the source  code.
-"""
+""".. include:: ../README.md."""
 
 
 __author__ = """Thomas Camminady"""
