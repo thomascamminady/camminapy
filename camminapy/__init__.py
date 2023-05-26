@@ -1,4 +1,4 @@
-r"""# My personal code dumpster.
+r"""# My personal code collection.
 
 Go to [Github](https://github.com/thomascamminady/camminapy) for the source  code.
 """
