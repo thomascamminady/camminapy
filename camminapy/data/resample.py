@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import polars as pl
 
-from camminapy import logger
+from camminapy.utils.logger import logger
 
 
 def resample_dataframe_polars(

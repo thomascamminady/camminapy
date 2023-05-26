@@ -29,12 +29,7 @@ cov:
 	make coverage
 
 doc:
-	mkdir -p html/
-	poetry run pdoc --html camminapy --force
-	rm -rf docs/
-	mkdir docs/
-	mv html/camminapy/* docs
-	rm -rf html/
+	pdoc camminapy -o docs  --docformat numpy
 
 publish:
 	poetry run pyclean .

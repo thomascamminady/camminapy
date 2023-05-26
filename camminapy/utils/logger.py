@@ -3,7 +3,7 @@ import os
 
 from rich.logging import RichHandler
 
-from camminapy import config
+from camminapy.utils.config import config
 
 logger = logging.getLogger(__name__)
 
