@@ -30,6 +30,9 @@ cov:
 
 doc:
 	poetry run pdoc camminapy -o docs  --docformat numpy
+	pre-commit run --all || true
+	pre-commit run --all
+	git commit -am "Updating Doc."
 
 publish:
 	poetry run pyclean .
