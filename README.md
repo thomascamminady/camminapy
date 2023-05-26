@@ -1,4 +1,5 @@
 My personal code collection.
+Link to [Github](https://github.com/thomascamminady/camminapy).
 
 ## Installation
 
