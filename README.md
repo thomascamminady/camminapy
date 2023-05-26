@@ -5,14 +5,14 @@ My personal code collection.
 Install via `pip`:
 
 ```bash
-   pip install camminapy
+pip install camminapy
 ```
 
 
 Install via `poetry`:
 
 ```bash
-   poetry add camminapy
+poetry add camminapy
 ```
 
 ## Development
