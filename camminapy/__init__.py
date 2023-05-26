@@ -1,4 +1,4 @@
-""".. include:: ../README.md."""
+""".. include:: ../README.md"""  # noqa
 
 
 __author__ = """Thomas Camminady"""
