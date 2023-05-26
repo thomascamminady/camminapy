@@ -3,15 +3,6 @@ camminapy
 =========
 
 
-Development workflow:
-
-.. code-block:: bash
-
-   make full
-
-
-
-
 
 Install via ``pip``:
 
