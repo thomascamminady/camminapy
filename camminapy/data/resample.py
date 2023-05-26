@@ -101,7 +101,7 @@ def resample_dataframe_grouped_polars(
 
     Info
     -------
-    This is a wrapper that just calls resample_dataframe_polars for each group.
+    This is a wrapper that just calls `resample_dataframe_polars` for each group.
     """
     return pl.concat(
         [
@@ -144,7 +144,7 @@ def resample_dataframe_pandas(
 
     Info
     -------
-    This is a wrapper that just calls resample_dataframe_polars.
+    This is a wrapper that just calls `resample_dataframe_polars`.
     """
     return resample_dataframe_polars(
         df=pl.DataFrame(df),
@@ -185,7 +185,7 @@ def resample_dataframe_grouped_pandas(
 
     Info
     -------
-    This is a wrapper that just calls resample_dataframe_grouped_polars.
+    This is a wrapper that just calls `resample_dataframe_grouped_polars`.
 
     """
     return resample_dataframe_grouped_polars(
