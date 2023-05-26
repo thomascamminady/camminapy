@@ -29,7 +29,7 @@ cov:
 	make coverage
 
 doc:
-	pdoc camminapy -o docs  --docformat numpy
+	poetry run pdoc camminapy -o docs  --docformat numpy
 
 publish:
 	poetry run pyclean .
