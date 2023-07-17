@@ -8,7 +8,7 @@ repository = "https://github.com/thomascamminady/camminapy"
 homepage = "https://thomascamminady.github.io/camminapy/camminapy.html"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4"
+python = ">=3.10,<3.12"
 altair = "^5.0.0"
 gitpython = "^3.1.31"
 polars = ">=0.18.0"
