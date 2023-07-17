@@ -66,14 +66,9 @@ def resample_dataframe_polars(
 
     # Forward fill string columns because interpolation does not
     # work on them. Only the first entry will be preserved and the others are none.
-    # This might need to be updated in the future to include columns
-    # other than pl.Utf8.
-    df_with_data_only_at_interpolation_points = (
-        df_with_data_only_at_interpolation_points.with_columns(
-            cs.by_dtype(pl.Utf8).forward_fill()
-        )
+    return df_with_data_only_at_interpolation_points.with_columns(
+        cs.string().fill_null(strategy="forward")
     )
-    return df_with_data_only_at_interpolation_points
 
 
 #######################################################################################
