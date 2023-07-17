@@ -94,3 +94,24 @@ def test_reproduce_original_df_grouped_but_has_no_group_polars(n: int, step: int
     )
 
     assert df.frame_equal(df_resampled)
+
+
+def test_correctly_treat_string_cols():
+    df = pd.DataFrame({"t": [1, 2, 3], "y": [10, 20, 30], "z": ["dog", "dog", "dog"]})
+    df2 = resample_dataframe_pandas(df, interpolation_column="t", interpolation_step=1)
+    assert df.equals(df2)
+
+
+def test_correctly_treat_string_cols_grps():
+    df = pd.DataFrame(
+        {
+            "t": [1, 2, 3, 4],
+            "y": [10, 20, 30, 22],
+            "z": ["dog", "dog", "cat", "cat"],
+            "grp": ["A", "A", "B", "B"],
+        }
+    )
+    df2 = resample_dataframe_grouped_pandas(
+        df, interpolation_column="t", interpolation_step=1, group_column="grp"
+    )
+    assert df.equals(df2)

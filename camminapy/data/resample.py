@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import polars as pl
+import polars.selectors as cs
 
 from camminapy.utils.logger import logger
 
@@ -30,6 +31,7 @@ def resample_dataframe_polars(
         A dataframe with the same columns as the input dataframe and where
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
+        **Note**: This will **NOT** extrapolate.
     """
     # Get the x-values onto which we want to interpolate the data.
     interpolation_points = pl.DataFrame(
@@ -62,6 +64,15 @@ def resample_dataframe_polars(
         n_output = len(df_with_data_only_at_interpolation_points)
         logger.info(f"Resampled from {n_input} rows to {n_output} rows.")
 
+    # Forward fill string columns because interpolation does not
+    # work on them. Only the first entry will be preserved and the others are none.
+    # This might need to be updated in the future to include columns
+    # other than pl.Utf8.
+    df_with_data_only_at_interpolation_points = (
+        df_with_data_only_at_interpolation_points.with_columns(
+            cs.by_dtype(pl.Utf8).forward_fill()
+        )
+    )
     return df_with_data_only_at_interpolation_points
 
 
