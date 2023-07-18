@@ -45,6 +45,7 @@ publish:
 
 
 full:
+	make test
 	poetry version patch
 	poetry publish --build
 	make doc
