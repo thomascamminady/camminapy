@@ -128,9 +128,6 @@ pandas==2.0.3 ; python_version >= "3.10" and python_version < "3.12" \
     --hash=sha256:e4c7c9f27a4185304c7caf96dc7d91bc60bc162221152de697c98eb0b2648dd8 \
     --hash=sha256:f167beed68918d62bffb6ec64f2e1d8a7d297a038f86d4aed056b9493fca407f \
     --hash=sha256:f3421a7afb1a43f7e38e82e844e2bca9a6d793d66c1a7f9f0ff39a795bbc5e02
-pdoc==13.1.1 ; python_version >= "3.10" and python_version < "3.12" \
-    --hash=sha256:2b8e341b1882ed8217e95c1f3f1f11d34f9ef93a5796287590162e2035296815 \
-    --hash=sha256:9025c6cd2448b18662e88eacf84c6eb050dcbdc8ee5259aee5e40a1c2b417840
 polars==0.18.7 ; python_version >= "3.10" and python_version < "3.12" \
     --hash=sha256:1f509e06297829e16de04fd134b46bba40d0e86887b1573a7c49757b1ebf9048 \
     --hash=sha256:b3771aff97a47fc50e8b2485c89f29dfd884f8b1cd72b4c3afbad2ba357501ab \

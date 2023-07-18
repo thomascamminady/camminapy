@@ -115,3 +115,9 @@ def test_correctly_treat_string_cols_grps():
         df, interpolation_column="t", interpolation_step=1, group_column="grp"
     )
     assert df.equals(df2)
+
+
+def test_resample_non_int():
+    df = pl.DataFrame({"x": [1, 2, 3.5], "y": [2, 3, 4]})
+    df2 = resample_dataframe_polars(df, interpolation_column="x", interpolation_step=1)
+    assert df2["x"].to_list() == [1, 2, 3]

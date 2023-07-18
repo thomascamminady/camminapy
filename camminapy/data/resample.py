@@ -42,7 +42,7 @@ def resample_dataframe_polars(
                 step=interpolation_step,
             )
         }
-    )
+    ).filter(pl.col(interpolation_column) <= df.max()[0, interpolation_column])
     # Add the new interpolation points to the input dataframe and interpolate the
     # data onto those new interpolation points.
     df_with_data_at_additional_interpolation_points = (
