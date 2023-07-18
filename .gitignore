@@ -163,3 +163,4 @@ logs/
 .pypi_token
 .venv/
 logs/
+docs/
